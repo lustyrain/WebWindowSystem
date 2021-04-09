@@ -4,7 +4,6 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
-const yts = require('yt-search');
 
 const userDataDir = './tmp/';
 
@@ -34,12 +33,3 @@ app.post('/save', async (req, res, next) => {
   // パラメータ名、nameを出力
 });
 
-app.post('/youtube-search', async (req, res, next) => {
-  const search = req.body.search;
-  if(!search || search === '') {
-    res.send('');
-    return ;
-  }
-  const response = await yts(search);
-  res.send(response);
-});
